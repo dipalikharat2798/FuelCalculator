@@ -60,26 +60,27 @@ public class MainActivity extends AppCompatActivity {
         int price = item3;
         if (dist == 0) {
             if (eff == 0) {
-                double required_ltr = tripDistance / fuelEfficiency; //miles/gallon
+                double required_ltr = tripDistance / fuelEfficiency; //gallon
                 double fuel_cost = required_ltr * fuelPrice;
                 result_tv.setText(required_ltr +" gallons"+ " " + fuel_cost);
             } else {
 
-                double required_ltr = tripDistance / (fuelEfficiency*282.481061);//miles/gallon
+                double required_ltr = (tripDistance * fuelEfficiency * 1.609)/100; //liters
                 double fuel_cost = required_ltr * fuelPrice;
-                result_tv.setText(required_ltr +" gallons"+ " " + fuel_cost);
+                result_tv.setText(required_ltr +" liters"+ " " + fuel_cost);
             }
         } else {
             if (eff == 0) {
-                double required_ltr =((tripDistance*0.62137119)/fuelEfficiency)*4.546092;//km/100ltr
+                double required_ltr =tripDistance/(1.6093*20); //gallon
                 double fuel_cost = required_ltr * fuelPrice;
-                result_tv.setText(required_ltr +" ltrs"+ " " + fuel_cost);
+                result_tv.setText(required_ltr +" gallon"+ " " + fuel_cost);
             } else {
-                double required_ltr = (tripDistance * fuelEfficiency)/100; //km/100ltr
+                double required_ltr = (tripDistance * fuelEfficiency)/100; //liters
                 double fuel_cost = required_ltr * fuelPrice;
-                result_tv.setText(required_ltr +" ltrs"+ " " + fuel_cost);
+                result_tv.setText(required_ltr +" liters"+ " " + fuel_cost);
             }
         }
     }
+
 
 }
