@@ -3,12 +3,14 @@ package com.example.fuelcalculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText trip_distance_edt, fuel_eff_edt, fuel_price_edt;
@@ -33,14 +35,20 @@ public class MainActivity extends AppCompatActivity {
         calculate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double tripDistance = Double.parseDouble(trip_distance_edt.getText().toString());
-                double fuelEfficiency = Double.parseDouble(fuel_eff_edt.getText().toString());
-                double fuelPrice = Double.parseDouble(fuel_price_edt.getText().toString());
-                int item1 = trip_distance_spinner.getSelectedItemPosition();
-                int item2 = fuel_eff_spinner.getSelectedItemPosition();
-                int item3 = fuel_price_spinner.getSelectedItemPosition();
-                evaluate(item1, item2, item3, tripDistance, fuelEfficiency, fuelPrice);
-                Log.d("TAG", "onClick: " + item1 + item2 + item3);
+                if (trip_distance_edt.getText().toString().matches("") || fuel_price_edt.getText().toString().matches("") ||
+                        fuel_price_edt.getText().toString().matches("")) {
+                    Toast.makeText(MainActivity.this, "Fields are empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    double tripDistance = Double.parseDouble(trip_distance_edt.getText().toString());
+                    double fuelEfficiency = Double.parseDouble(fuel_eff_edt.getText().toString());
+                    double fuelPrice = Double.parseDouble(fuel_price_edt.getText().toString());
+                    int item1 = trip_distance_spinner.getSelectedItemPosition();
+                    int item2 = fuel_eff_spinner.getSelectedItemPosition();
+                    int item3 = fuel_price_spinner.getSelectedItemPosition();
+                    evaluate(item1, item2, item3, tripDistance, fuelEfficiency, fuelPrice);
+                    Log.d("TAG", "onClick: " + item1 + item2 + item3);
+                }
             }
         });
 
@@ -50,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 trip_distance_edt.setText("");
                 fuel_eff_edt.setText("");
                 fuel_price_edt.setText("");
+                result_tv.setText("");
             }
         });
     }
@@ -105,6 +114,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 
 }
