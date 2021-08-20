@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">FuelCalculator</string>
-    <string-array name="fuel">
+    <string-array name="fuel_eff">
 
-        <item>miles per gallon(mpg)</item>
+        <item>miles per gallon(MPG)</item>
 
-        <item>liters per 100km</item>
+        <item>KM per liters(KMPL)</item>
 
     </string-array>
     <string-array name="distance">
@@ -21,4 +21,13 @@
         <item>Rs. per liters</item>
 
     </string-array>
+    <string-array name="fuel">
+
+        <item>gallon</item>
+
+        <item>liters</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
