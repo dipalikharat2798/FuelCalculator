@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
         fuel_btn=findViewById(R.id.fuel_btn);
         distance_btn=findViewById(R.id.distance_btn);
 
+        CalculateFuelFragment calculateFuelFragment=new CalculateFuelFragment();
+        replaceFragment(calculateFuelFragment);
 
         fuel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                replaceFragment(new CalculateFuelFragment());
+                replaceFragment(calculateFuelFragment);
 
             }
         });
